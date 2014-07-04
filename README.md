@@ -14,7 +14,7 @@ The installer script does the following:
 7. Repack ramdisk and boot.img
 8. Flash new boot.img
 
-This was specifically designed for HTC EVITA but can be modified for 
+This was specifically designed for HTC VILLE but can be modified for 
 other devices as well.
 
 A compatable f2fs enabled kernel can also be added by replacign the zImage
@@ -33,4 +33,4 @@ ktoonsez
 alucard24
 dorimanx
 Metallice
-jrior001 - Modified to fit in with my Evita anykernel zip
+jrior001 - Modified to fit in with Ville anykernel zip
