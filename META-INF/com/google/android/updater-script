@@ -32,11 +32,6 @@ set_perm(0, 2000, 0755, "/system/bin/fsck.f2fs");
 set_perm(0, 2000, 0755, "/system/bin/mkfs.f2fs");
 set_perm(0, 2000, 0755, "/system/bin/fibmap.f2fs");
 
-#FOR f2fs tools
-#ui_print("Copy f2fs tools...");
-#package_extract_dir("system", "/system");
-#set_perm_recursive(0, 2000, 0777, 0777, "/system/etc/init.d");
-
 ui_print("Extract old kernel...");
 run_program("/sbin/busybox", "dd", "if=/dev/block/mmcblk0p21", "of=/tmp/boot.img");
 set_progress(0.5);
