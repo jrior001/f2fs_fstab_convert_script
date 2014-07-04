@@ -1,0 +1,60 @@
+Manifest-Version: 1.0
+Created-By: 1.0 (Android SignApk)
+
+Name: system/lib/modules/prima_wlan.ko
+SHA1-Digest: 0RpE8SuLmqQ6N5Q8gWSR2HY3lWs=
+
+Name: system/lib/modules/scsi_wait_scan.ko
+SHA1-Digest: 9rwN3OqLLMi4JTOBsockmR/htfE=
+
+Name: kernel/edit_ramdisk.sh
+SHA1-Digest: 4QKfVPDuezE1W38DP5mjwCqYxiU=
+
+Name: signapk
+SHA1-Digest: AF22jqtvJuVYQjl+SXsAoI4DMhg=
+
+Name: kernel/mkbootimg.sh
+SHA1-Digest: ICW+SNWXkItJJOHriuUM7+PD7Hs=
+
+Name: kernel/unpackbootimg
+SHA1-Digest: WHpf3s2ACcO3Ub8hJc2EB9CcbRc=
+
+Name: system/lib/modules/qcrypto.ko
+SHA1-Digest: FRsvm02Jce5C7z0b4qh8MbVz2jI=
+
+Name: kernel/modclean.sh
+SHA1-Digest: chXBRACJC5yhdn72O1PG/3VuK6U=
+
+Name: META-INF/com/google/android/update-binary
+SHA1-Digest: anNllEtU555b2xIp2efyzCyRIKk=
+
+Name: key.pk8
+SHA1-Digest: osiVfpBrRc92mXcrnOhCCA54mcI=
+
+Name: META-INF/com/google/android/updater-script
+SHA1-Digest: WRxFYdzn+h/K1t9vPLlAH3FUqq4=
+
+Name: system/lib/modules/qcedev.ko
+SHA1-Digest: ATEYk9uD+H0l1e0CDsE40+ASxPI=
+
+Name: system/lib/modules/qce40.ko
+SHA1-Digest: k9XntP5nEUGLIPMm9OQzIk5yXac=
+
+Name: kernel/zImage
+SHA1-Digest: 7emfpB6llSTaBikwlwyXudk8+f0=
+
+Name: kernel/mkbootimg
+SHA1-Digest: OmA+01ktAmwWsnn/joGtpQhPoZY=
+
+Name: kernel/compatibility.sh
+SHA1-Digest: bFeFgVQz+Aq16iS3HqbV4lu/K9I=
+
+Name: signapk.jar
+SHA1-Digest: sW8Abnv1Ca3VKPS5oHXKNz1TEgM=
+
+Name: system/lib/modules/radio-iris-transport.ko
+SHA1-Digest: 2qLli5svui/7sqpn+5E4TvpjEsg=
+
+Name: certificate.pem
+SHA1-Digest: xib8bNr/6JF/7ijAKkkUeBnC8Iw=
+

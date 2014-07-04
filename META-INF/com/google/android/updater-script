@@ -1,0 +1,75 @@
+set_progress(0.0);
+ui_print(" ");
+ui_print("F2FS fstab converter for Evita");
+ui_print("   By: jrior001       ");
+ifelse(is_mounted("/system") == "/system", unmount("/system"));
+ifelse(is_mounted("/cache") == "/cache", unmount("/cache"));
+ui_print("..");
+set_progress(0.1);
+
+
+ui_print("Extracting files.....");
+package_extract_dir("kernel", "/tmp");
+set_perm(0, 0, 0777, "/tmp/compatibility.sh");
+set_perm(0, 0, 0777, "/tmp/mkbootimg.sh");
+set_perm(0, 0, 0777, "/tmp/mkbootimg");
+set_perm(0, 0, 0777, "/tmp/unpackbootimg");
+set_perm(0, 0, 0777, "/tmp/modclean.sh");
+set_perm(0, 0, 0777, "/tmp/edit_ramdisk.sh");
+set_perm(0, 0, 0777, "/tmp/fstab.qcom.tmp");
+set_progress(0.1);
+
+
+ui_print("Mount partitions...");
+run_program("/sbin/busybox", "mount", "/system");
+run_program("/sbin/busybox", "mount", "/data");
+run_program("/sbin/busybox", "mount", "/cache");
+set_progress(0.2);
+
+ui_print("Copying f2fs tools...");
+package_extract_dir("system", "/system");
+set_perm(0, 2000, 0755, "/system/bin/fsck.f2fs");
+set_perm(0, 2000, 0755, "/system/bin/mkfs.f2fs");
+set_perm(0, 2000, 0755, "/system/bin/fibmap.f2fs");
+
+#FOR f2fs tools
+#ui_print("Copy f2fs tools...");
+#package_extract_dir("system", "/system");
+#set_perm_recursive(0, 2000, 0777, 0777, "/system/etc/init.d");
+
+ui_print("Extract old kernel...");
+run_program("/sbin/busybox", "dd", "if=/dev/block/mmcblk0p21", "of=/tmp/boot.img");
+set_progress(0.5);
+
+ui_print("Extract ramdisk...");
+run_program("/tmp/unpackbootimg", "-i", "/tmp/boot.img", "-o", "/tmp/");
+set_progress(0.65);
+
+ui_print("Fixing your ramdisk...");
+ui_print("looking for busybox...");
+ui_print("adding init.d support (if not already supported)...");
+ui_print("Fixing fstab for any f2fs formated drives...");
+run_program("/tmp/edit_ramdisk.sh");
+set_progress(0.7);
+
+ui_print("Unmounting partitions...");
+unmount("/system");
+unmount("/cache");
+unmount("/data");
+set_progress(0.8);
+
+ui_print("Making new boot.img...");
+run_program("/tmp/mkbootimg.sh");
+set_progress(0.9);
+
+ui_print("Flashing new boot.img...");
+run_program("/sbin/busybox", "dd", "if=/tmp/newboot.img", "of=/dev/block/mmcblk0p21");
+set_progress(0.95);
+
+ui_print("");
+set_progress(0.9);
+
+ui_print("");
+ui_print("fstab conversion complete");
+ui_print("");
+ui_print("Please reboot");
