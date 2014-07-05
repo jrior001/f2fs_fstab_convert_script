@@ -61,7 +61,8 @@ ui_print("Flashing new boot.img...");
 run_program("/sbin/busybox", "dd", "if=/tmp/newboot.img", "of=/dev/block/mmcblk0p21");
 set_progress(0.95);
 
-ui_print("");
+ui_print("Cleaning up files...");
+delete("/tmp/*");
 set_progress(0.9);
 
 ui_print("");
