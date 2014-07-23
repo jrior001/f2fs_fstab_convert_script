@@ -70,42 +70,42 @@ fi
 # this may output errors if the partition is already mounted (/data and /cache probably will be), so pipe them to /dev/null
 # make sure we mount /system before calling any additional shell scripts,
 # because they may use /system/bin/sh instead of /sbin/sh and that may cause problems
-mount /system 2> /dev/null
-mount /cache 2> /dev/null
+#mount /system 2> /dev/null
+#mount /cache 2> /dev/null
 mount /data 2> /dev/null
 
 # find out which partitions are formatted as F2FS
 mount | grep -q 'data type f2fs'
 DATA_F2FS=$?
 ui_print "Data f2f result=$DATA_F2FS "
-mount | grep -q 'cache type f2fs'
-CACHE_F2FS=$?
-ui_print "Cache f2f result=$CACHE_F2FS "
-mount | grep -q 'system type f2fs'
-SYSTEM_F2FS=$?
-ui_print "System f2f result=$SYSTEM_F2FS "
+#mount | grep -q 'cache type f2fs'
+#CACHE_F2FS=$?
+#ui_print "Cache f2f result=$CACHE_F2FS "
+#mount | grep -q 'system type f2fs'
+#SYSTEM_F2FS=$?
+#ui_print "System f2f result=$SYSTEM_F2FS "
 
-if [ $SYSTEM_F2FS -eq 0 ]; then
-	$BB sed -i "s/# F2FSSYS//g" /tmp/fstab.qcom.tmp;
-else
-	$BB sed -i "s/# EXT4SYS//g" /tmp/fstab.qcom.tmp;
-fi;
+#if [ $SYSTEM_F2FS -eq 0 ]; then
+#	$BB sed -i "s/# F2FSSYS//g" /tmp/fstab.qcom.tmp;
+#else
+#	$BB sed -i "s/# EXT4SYS//g" /tmp/fstab.elite.tmp;
+#fi;
 
-if [ $CACHE_F2FS -eq 0 ]; then
-	$BB sed -i "s/# F2FSCAC//g" /tmp/fstab.qcom.tmp;
-else
-	$BB sed -i "s/# EXT4CAC//g" /tmp/fstab.qcom.tmp;
-fi;
+#if [ $CACHE_F2FS -eq 0 ]; then
+#	$BB sed -i "s/# F2FSCAC//g" /tmp/fstab.elite.tmp;
+#else
+#	$BB sed -i "s/# EXT4CAC//g" /tmp/fstab.elite.tmp;
+#fi;
 
 if [ $DATA_F2FS -eq 0 ]; then
-	$BB sed -i "s/# F2FSDAT//g" /tmp/fstab.qcom.tmp;
+	$BB sed -i "s/# F2FSDAT//g" /tmp/fstab.elite.tmp;
 else
-	$BB sed -i "s/# EXT4DAT//g" /tmp/fstab.qcom.tmp;
+	$BB sed -i "s/# EXT4DAT//g" /tmp/fstab.elite.tmp;
 fi;
 
-cp /tmp/fstab.qcom.tmp /tmp/fstab.qcom.tmp1;
-rm /tmp/ramdisk/fstab.qcom
-mv /tmp/fstab.qcom.tmp /tmp/ramdisk/fstab.qcom;
+cp /tmp/fstab.elite.tmp /tmp/fstab.elite.tmp1;
+rm /tmp/ramdisk/fstab.elite
+mv /tmp/fstab.elite.tmp /tmp/ramdisk/fstab.elite;
 
 rm /tmp/ramdisk/boot.img-ramdisk.gz
 rm /tmp/boot.img-ramdisk.gz
