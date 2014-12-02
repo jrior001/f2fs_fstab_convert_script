@@ -77,35 +77,41 @@ mount /data 2> /dev/null
 # find out which partitions are formatted as F2FS
 mount | grep -q 'data type f2fs'
 DATA_F2FS=$?
-ui_print "Data f2f result=$DATA_F2FS "
+#ui_print "Data f2f result=$DATA_F2FS "
 mount | grep -q 'cache type f2fs'
 CACHE_F2FS=$?
-ui_print "Cache f2f result=$CACHE_F2FS "
+#ui_print "Cache f2f result=$CACHE_F2FS "
 mount | grep -q 'system type f2fs'
 SYSTEM_F2FS=$?
-ui_print "System f2f result=$SYSTEM_F2FS "
+#ui_print "System f2f result=$SYSTEM_F2FS "
 
 if [ $SYSTEM_F2FS -eq 0 ]; then
-	$BB sed -i "s/# F2FSSYS//g" /tmp/fstab.qcom.tmp;
+	$BB sed -i "s/# F2FSSYS//g" /tmp/fstab.spade.tmp;
+	ui_print "F2FS /system detected"
 else
-	$BB sed -i "s/# EXT4SYS//g" /tmp/fstab.qcom.tmp;
+	$BB sed -i "s/# EXT4SYS//g" /tmp/fstab.spade.tmp;
+	ui_print "EXT4 /system detected"
 fi;
 
 if [ $CACHE_F2FS -eq 0 ]; then
-	$BB sed -i "s/# F2FSCAC//g" /tmp/fstab.qcom.tmp;
+	$BB sed -i "s/# F2FSCAC//g" /tmp/fstab.spade.tmp;
+	ui_print "F2FS /cache detected"
 else
-	$BB sed -i "s/# EXT4CAC//g" /tmp/fstab.qcom.tmp;
+	$BB sed -i "s/# EXT4CAC//g" /tmp/fstab.spade.tmp;
+	ui_print "EXT4 /system detected"
 fi;
 
 if [ $DATA_F2FS -eq 0 ]; then
-	$BB sed -i "s/# F2FSDAT//g" /tmp/fstab.qcom.tmp;
+	$BB sed -i "s/# F2FSDAT//g" /tmp/fstab.spade.tmp;
+	ui_print "F2FS /data detected"
 else
-	$BB sed -i "s/# EXT4DAT//g" /tmp/fstab.qcom.tmp;
+	$BB sed -i "s/# EXT4DAT//g" /tmp/fstab.spade.tmp;
+	ui_print "EXT4 /system detected"
 fi;
 
-cp /tmp/fstab.qcom.tmp /tmp/fstab.qcom.tmp1;
-rm /tmp/ramdisk/fstab.qcom
-mv /tmp/fstab.qcom.tmp /tmp/ramdisk/fstab.qcom;
+cp /tmp/fstab.spade.tmp /tmp/fstab.spade.tmp1;
+rm /tmp/ramdisk/fstab.spade
+mv /tmp/fstab.spade.tmp /tmp/ramdisk/fstab.spade;
 
 rm /tmp/ramdisk/boot.img-ramdisk.gz
 rm /tmp/boot.img-ramdisk.gz
