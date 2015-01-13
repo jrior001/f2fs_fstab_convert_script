@@ -3,16 +3,16 @@
 # The filesystem that contains the filesystem checker binary (typically /system) cannot
 # specify MF_CHECK, and must come before any filesystems that do specify MF_CHECK
 
-/dev/block/platform/msm_sdcc.2/by-num/p21     /recovery    emmc    defaults                                                defaults
-/dev/block/platform/msm_sdcc.2/by-num/p22     /boot        emmc    defaults                                                defaults
-# F2FSSYS/dev/block/platform/msm_sdcc.2/by-num/p25     /system      f2fs    ro,discard,nodiratime,inline_xattr                                         wait
-# EXT4SYS/dev/block/platform/msm_sdcc.2/by-num/p25     /system      ext4    ro,barrier=1                                            wait
-# F2FSDAT/dev/block/platform/msm_sdcc.2/by-num/p26     /data        f2fs    rw,discard,nosuid,nodev,noatime,nodiratime,inline_xattr,inline_data  wait,nonremovable,check,encryptable=footer,length=-16384
-# EXT4DAT/dev/block/platform/msm_sdcc.2/by-num/p26     /data        ext4    noatime,nosuid,nodev,barrier=1,data=ordered,noauto_da_alloc,errors=panic wait,check,encryptable=footer,length=-16384
-# F2FSCAC/dev/block/platform/msm_sdcc.2/by-num/p27     /cache       f2fs    rw,discard,nosuid,nodev,noatime,nodiratime,inline_xattr,inline_data  wait,check
-# EXT4CAC/dev/block/platform/msm_sdcc.2/by-num/p27     /cache       ext4    noatime,nosuid,nodev,barrier=1,data=ordered,noauto_da_alloc,errors=panic wait,check
+/dev/block/platform/msm_sdcc.2/by-name/recovery     /recovery   emmc    defaults        defaults
+/dev/block/platform/msm_sdcc.2/by-name/boot         /boot       emmc    defaults        defaults
+# F2FSSYS/dev/block/platform/msm_sdcc.2/by-name/system     /system      f2fs    ro,discard,nodiratime,inline_xattr                                         wait
+# EXT4SYS/dev/block/platform/msm_sdcc.2/by-name/system     /system      ext4    ro,barrier=1                                            wait
+# F2FSDAT/dev/block/platform/msm_sdcc.2/by-name/userdata     /data        f2fs    rw,discard,nosuid,nodev,noatime,nodiratime,inline_xattr,inline_data  wait,nonremovable,check,encryptable=footer,length=-16384
+# EXT4DAT/dev/block/platform/msm_sdcc.2/by-name/userdata     /data        ext4    noatime,nosuid,nodev,barrier=1,data=ordered,noauto_da_alloc,errors=panic wait,check,encryptable=footer,length=-16384
+# F2FSCAC/dev/block/platform/msm_sdcc.2/by-name/cache     /cache       f2fs    rw,discard,nosuid,nodev,noatime,nodiratime,inline_xattr,inline_data  wait,check
+# EXT4CAC/dev/block/platform/msm_sdcc.2/by-name/cache     /cache       ext4    noatime,nosuid,nodev,barrier=1,data=ordered,noauto_da_alloc,errors=panic wait,check
 
-/devices/platform/msm_sdcc.4/mmc_host/mmc2    auto  vfat  defaults  voldmanaged=sdcard0:auto,noemulatedsd
+/devices/platform/msm_sdcc.4/mmc_host/mmc2*         auto        auto    defaults        voldmanaged=sdcard0:auto,noemulatedsd
 
 # zram
 #/dev/block/zram0                              none  swap  defaults  zramsize=67108864
