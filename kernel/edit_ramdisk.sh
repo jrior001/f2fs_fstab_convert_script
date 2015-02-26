@@ -86,32 +86,32 @@ SYSTEM_F2FS=$?
 #ui_print "System f2f result=$SYSTEM_F2FS "
 
 if [ $SYSTEM_F2FS -eq 0 ]; then
-	$BB sed -i "s/# F2FSSYS//g" /tmp/fstab.spade.tmp;
+	$BB sed -i "s/# F2FSSYS//g" /tmp/fstab.htc7x30.tmp;
 	ui_print "F2FS /system detected"
 else
-	$BB sed -i "s/# EXT4SYS//g" /tmp/fstab.spade.tmp;
+	$BB sed -i "s/# EXT4SYS//g" /tmp/fstab.htc7x30.tmp;
 	ui_print "EXT4 /system detected"
 fi;
 
 if [ $CACHE_F2FS -eq 0 ]; then
-	$BB sed -i "s/# F2FSCAC//g" /tmp/fstab.spade.tmp;
+	$BB sed -i "s/# F2FSCAC//g" /tmp/fstab.htc7x30.tmp;
 	ui_print "F2FS /cache detected"
 else
-	$BB sed -i "s/# EXT4CAC//g" /tmp/fstab.spade.tmp;
+	$BB sed -i "s/# EXT4CAC//g" /tmp/fstab.htc7x30.tmp;
 	ui_print "EXT4 /system detected"
 fi;
 
 if [ $DATA_F2FS -eq 0 ]; then
-	$BB sed -i "s/# F2FSDAT//g" /tmp/fstab.spade.tmp;
+	$BB sed -i "s/# F2FSDAT//g" /tmp/fstab.htc7x30.tmp;
 	ui_print "F2FS /data detected"
 else
-	$BB sed -i "s/# EXT4DAT//g" /tmp/fstab.spade.tmp;
+	$BB sed -i "s/# EXT4DAT//g" /tmp/fstab.htc7x30.tmp;
 	ui_print "EXT4 /system detected"
 fi;
 
-cp /tmp/fstab.spade.tmp /tmp/fstab.spade.tmp1;
-rm /tmp/ramdisk/fstab.spade
-mv /tmp/fstab.spade.tmp /tmp/ramdisk/fstab.spade;
+cp /tmp/fstab.htc7x30.tmp /tmp/fstab.htc7x30.tmp1;
+rm /tmp/ramdisk/fstab.htc7x30
+mv /tmp/fstab.htc7x30.tmp /tmp/ramdisk/fstab.htc7x30;
 
 rm /tmp/ramdisk/boot.img-ramdisk.gz
 rm /tmp/boot.img-ramdisk.gz
