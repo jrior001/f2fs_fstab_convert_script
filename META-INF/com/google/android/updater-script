@@ -26,12 +26,6 @@ run_program("/sbin/busybox", "mount", "/data");
 run_program("/sbin/busybox", "mount", "/cache");
 set_progress(0.2);
 
-ui_print("Copying f2fs tools...");
-package_extract_dir("system", "/system");
-set_perm(0, 2000, 0755, "/system/bin/fsck.f2fs");
-set_perm(0, 2000, 0755, "/system/bin/mkfs.f2fs");
-set_perm(0, 2000, 0755, "/system/bin/fibmap.f2fs");
-
 ui_print("Extract old kernel...");
 run_program("/sbin/busybox", "dd", "if=/dev/block/mmcblk0p21", "of=/tmp/boot.img");
 set_progress(0.5);

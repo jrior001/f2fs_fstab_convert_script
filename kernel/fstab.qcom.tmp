@@ -22,12 +22,11 @@
 /dev/block/platform/msm_sdcc.1/by-name/recovery	/recovery	emmc	defaults						defaults
 /dev/block/platform/msm_sdcc.1/by-name/misc	/misc		emmc	defaults						defaults
 /dev/block/platform/msm_sdcc.1/by-name/devlog	/devlog		ext4	noatime,nosuid,nodev,barrier=0				wait
-# F2FSSYS/dev/block/platform/msm_sdcc.1/by-name/system	/system		f2fs	ro,discard,nodiratime,inline_xattr		wait
-# EXT4SYS/dev/block/platform/msm_sdcc.1/by-name/system	/system		ext4	ro,noatime,barrier=0					wait
-# F2FSCAC/dev/block/platform/msm_sdcc.1/by-name/cache	/cache		f2fs	noatime,nosuid,nodev,discard,nodiratime,inline_xattr,inline_data	wait
-# EXT4CAC/dev/block/platform/msm_sdcc.1/by-name/cache	/cache		ext4	noatime,nosuid,nodev,barrier=0				wait
-# F2FSDAT/dev/block/platform/msm_sdcc.1/by-name/userdata	/data		f2fs	noatime,nosuid,nodev,discard,nodiratime,inline_xattr,inline_data	wait,nonremovable,encryptable=/dev/block/platform/msm_sdcc.1/by-name/
-# EXT4DAT/dev/block/platform/msm_sdcc.1/by-name/userdata	/data		ext4	noatime,nosuid,nodev,noauto_da_alloc,barrier=0		wait,encryptable=/dev/block/platform/msm_sdcc.1/by-name/extra
+/dev/block/platform/msm_sdcc.1/by-name/system	/system		ext4	ro,noatime,barrier=0					wait
+/dev/block/platform/msm_sdcc.1/by-name/cache	/cache		f2fs	noatime,nosuid,nodev,discard,nodiratime,inline_xattr,inline_data	wait
+/dev/block/platform/msm_sdcc.1/by-name/cache	/cache		ext4	noatime,nosuid,nodev,barrier=0				wait
+/dev/block/platform/msm_sdcc.1/by-name/userdata	/data		f2fs	noatime,nosuid,nodev,discard,nodiratime,inline_xattr,inline_data	wait,nonremovable,encryptable=/dev/block/platform/msm_sdcc.1/by-name/
+/dev/block/platform/msm_sdcc.1/by-name/userdata	/data		ext4	noatime,nosuid,nodev,noauto_da_alloc,barrier=0		wait,encryptable=/dev/block/platform/msm_sdcc.1/by-name/extra
 
 # SD card
 /devices/platform/msm_sdcc.1/mmc_host/mmc0	auto	auto	defaults		voldmanaged=sdcard0:36,noemulatedsd
